@@ -9,6 +9,11 @@ const port = 3000;
 
 const upload = multer({ dest: 'uploads/' });
 
+app.get('/', (req, res) => {
+  res.write('<h1>Send file to /upload to convert your file to webp format</h1>');
+}
+);
+
 app.post('/upload', upload.single('file'), (req, res) => {
   const filePath = path.join(__dirname, req.file.path);
   const output = path.join(__dirname, req.file.path + '.webp');
